@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huerta Escolar Automatizada</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f9f4;
+      color: #2c3e50;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #1b5e20;
+      border-bottom: 2px solid #a5d6a7;
+      padding-bottom: 0.5rem;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .especie {
+      font-weight: bold;
+      color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Proyecto: Huerta Escolar EEST N°1</h1>
+  </header>
+
+  <main>
+    <!-- 1. Sección Objetivo -->
+    <section id="objetivo">
+      <h2>Objetivo del Proyecto</h2>
+      <p>Diseñar e implementar una huerta escolar automatizada que optimice la gestión del agua mediante sensores de humedad y riego programado, integrando conocimientos de automatización y producción sustentable.</p>
+    </section>
+
+    <!-- 2. Sección Especies Cultivadas -->
+    <section id="especies">
+      <h2>Especies Cultivadas</h2>
+      <ul>
+        <li><span class="especie">Tomate Cherry:</span> Requiere suelo húmedo constante y buena exposición solar.</li>
+        <li><span class="especie">Lechuga:</span> Crecimiento rápido con riego frecuente y moderado.</li>
+        <li><span class="especie">Ajo:</span> Necesita riego controlado para evitar el exceso de humedad en el bulbo.</li>
+        <li><span class="especie">Albahaca:</span> Planta aromática ideal para repelencia natural de plagas.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Sección Cronograma de Tareas -->
+    <section id="cronograma">
+      <h2>Cronograma de Tareas</h2>
+      <ol>
+        <li><strong>Semana 1:</strong> Preparación del terreno y medición de parámetros del suelo.</li>
+        <li><strong>Semana 2:</strong> Siembra de semillas y plantación de albahaca y lechuga.</li>
+        <li><strong>Semana 3:</strong> Instalación de sensores de humedad y calibración.</li>
+        <li><strong>Semana 4:</strong> Supervisión del sistema de riego y control de crecimiento.</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Funcionalidad JavaScript requerida -->
+  <script>
+    // Variable con nombre personalizado para los días de riego del grupo
+    const esquemaDiasRiegoGrupo = ["Lunes", "Miércoles", "Viernes"];
+
+    // Función requerida sin parámetros
+    function regarHuerta() {
+      console.log("=== CRONOGRAMA DE RIEGO LA HUERTA ===");
+      console.log("Días programados para el sistema de riego:");
+      
+      for (let i = 0; i < esquemaDiasRiegoGrupo.length; i++) {
+        console.log("- " + esquemaDiasRiegoGrupo[i] + ": Riego a las 08:00 hs y 18:00 hs");
+      }
+      
+      console.log("=====================================");
+    }
+
+    // Ejecución al cargar la página para verificar en consola (F12)
+    regarHuerta();
+  </script>
+</body>
+</html>
