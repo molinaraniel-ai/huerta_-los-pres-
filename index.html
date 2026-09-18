@@ -139,6 +139,38 @@ nav a {
         <li><strong>Semana 4:</strong> Supervisión del sistema de riego y control de crecimiento.</li>
       </ol>
     </section>
+    <section id="plantar">
+
+<h2>🌱 ¿Qué plantar este mes?</h2>
+
+<select id="mes">
+
+<option value="">Elegí un mes</option>
+<option value="enero">Enero</option>
+<option value="febrero">Febrero</option>
+<option value="marzo">Marzo</option>
+<option value="abril">Abril</option>
+<option value="mayo">Mayo</option>
+<option value="junio">Junio</option>
+<option value="julio">Julio</option>
+<option value="agosto">Agosto</option>
+<option value="septiembre">Septiembre</option>
+<option value="octubre">Octubre</option>
+<option value="noviembre">Noviembre</option>
+<option value="diciembre">Diciembre</option>
+
+</select>
+
+
+<button onclick="mostrarCultivo()">
+Consultar
+</button>
+
+
+<p id="resultado"></p>
+
+
+</section>
   </main>
 
   <!-- Funcionalidad JavaScript requerida -->
@@ -160,6 +192,44 @@ nav a {
 
     // Ejecución al cargar la página para verificar en consola (F12)
     regarHuerta();
+    function mostrarCultivo(){
+
+let mes = document.getElementById("mes").value;
+
+let resultado = document.getElementById("resultado");
+
+
+if(mes == "enero" || mes == "febrero" || mes == "diciembre"){
+
+resultado.innerHTML = "En verano podés plantar tomate, albahaca y zapallo.";
+
+}
+
+else if(mes == "marzo" || mes == "abril" || mes == "mayo"){
+
+resultado.innerHTML = "En otoño se recomienda acelga, espinaca y cebolla.";
+
+}
+
+else if(mes == "junio" || mes == "julio" || mes == "agosto"){
+
+resultado.innerHTML = "En invierno podés plantar ajo, puerro y brócoli.";
+
+}
+
+else if(mes == "septiembre" || mes == "octubre" || mes == "noviembre"){
+
+resultado.innerHTML = "En primavera podés plantar lechuga, zanahoria y tomate.";
+
+}
+
+else{
+
+resultado.innerHTML = "Elegí un mes para consultar.";
+
+}
+
+}
   </script>
 </body>
 </html>
