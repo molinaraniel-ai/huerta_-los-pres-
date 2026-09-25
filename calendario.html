@@ -185,7 +185,141 @@ section {
 }
 
 }
+/* =================================
+   ASISTENTE DE SIEMBRA PRO
+================================= */
 
+.asistente-siembra {
+  background: linear-gradient(135deg, #ffffff, #f0f8f1);
+  border: 1px solid #c8e6c9;
+  border-radius: 24px;
+  padding: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Título */
+
+.siembra-titulo {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.siembra-titulo span {
+  color: #2e7d32;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.siembra-titulo h2 {
+  border: none;
+  margin: 5px 0;
+  font-size: 2rem;
+}
+
+.siembra-titulo p {
+  color: #607d68;
+  margin: 0;
+}
+
+/* Botones de meses */
+
+.meses {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.meses button {
+  border: 1px solid #c8e6c9;
+  background: white;
+  color: #1b5e20;
+  padding: 12px 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.meses button:hover {
+  background: #2e7d32;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(46,125,50,0.25);
+}
+
+/* Resultado */
+
+.resultado-siembra {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid #d8ead9;
+  animation: aparecerResultado 0.5s ease;
+}
+
+.resultado-icono {
+  font-size: 55px;
+  margin-bottom: 5px;
+  animation: crecerPlanta 1s ease;
+}
+
+.resultado-siembra h3 {
+  color: #1b5e20;
+  font-size: 1.5rem;
+  margin: 5px 0;
+}
+
+.resultado-siembra p {
+  color: #607d68;
+}
+
+/* Animaciones */
+
+@keyframes aparecerResultado {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crecerPlanta {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Celulares */
+
+@media (max-width: 600px) {
+
+  .asistente-siembra {
+    padding: 20px;
+  }
+
+  .meses {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .siembra-titulo h2 {
+    font-size: 1.6rem;
+  }
+
+}
 </style>
 
 </head>
@@ -311,27 +445,42 @@ En invierno se utilizan cultivos que soportan bajas temperaturas.
 </ol>
 
 </section>
-<section id="plantar">
+<section id="plantar" class="asistente-siembra">
 
-<h2>🌱 ¿Qué plantar este mes?</h2>
+  <div class="siembra-titulo">
+    <span>🌱 ASISTENTE DE SIEMBRA</span>
+    <h2>¿Qué plantar este mes?</h2>
+    <p>Elegí un mes y descubrí qué cultivos se adaptan mejor a la temporada.</p>
+  </div>
 
-<select id="mes">
+  <div class="meses">
 
-<option value="">Elegí un mes</option>
-<option value="enero">Enero</option>
-<option value="febrero">Febrero</option>
-<option value="marzo">Marzo</option>
-<option value="abril">Abril</option>
-<option value="mayo">Mayo</option>
-<option value="junio">Junio</option>
-<option value="julio">Julio</option>
-<option value="agosto">Agosto</option>
-<option value="septiembre">Septiembre</option>
-<option value="octubre">Octubre</option>
-<option value="noviembre">Noviembre</option>
-<option value="diciembre">Diciembre</option>
+    <button onclick="mostrarCultivo('enero')">Ene</button>
+    <button onclick="mostrarCultivo('febrero')">Feb</button>
+    <button onclick="mostrarCultivo('marzo')">Mar</button>
+    <button onclick="mostrarCultivo('abril')">Abr</button>
+    <button onclick="mostrarCultivo('mayo')">May</button>
+    <button onclick="mostrarCultivo('junio')">Jun</button>
+    <button onclick="mostrarCultivo('julio')">Jul</button>
+    <button onclick="mostrarCultivo('agosto')">Ago</button>
+    <button onclick="mostrarCultivo('septiembre')">Sep</button>
+    <button onclick="mostrarCultivo('octubre')">Oct</button>
+    <button onclick="mostrarCultivo('noviembre')">Nov</button>
+    <button onclick="mostrarCultivo('diciembre')">Dic</button>
 
-</select>
+  </div>
+
+  <div id="resultado" class="resultado-siembra">
+
+    <div class="resultado-icono">🌱</div>
+
+    <h3>Elegí un mes</h3>
+
+    <p>Seleccioná una opción para conocer los cultivos recomendados.</p>
+
+  </div>
+
+</section>
 
 
 <button onclick="mostrarCultivo()">
@@ -349,46 +498,183 @@ Consultar
 </main>
 
 <script>
+const cultivos = {
 
-function mostrarCultivo(){
+  enero: {
+    estacion: "☀️ VERANO",
+    titulo: "Enero",
+    icono: "🍅",
+    plantas: "Tomate, albahaca y zapallo",
+    humedad: "Alta",
+    luz: "Alta",
+    temperatura: "Cálida",
+    riego: "Frecuente"
+  },
 
-let mes = document.getElementById("mes").value;
+  febrero: {
+    estacion: "☀️ VERANO",
+    titulo: "Febrero",
+    icono: "🌿",
+    plantas: "Tomate, pimiento y albahaca",
+    humedad: "Alta",
+    luz: "Alta",
+    temperatura: "Cálida",
+    riego: "Frecuente"
+  },
 
-let resultado = document.getElementById("resultado");
+  marzo: {
+    estacion: "🍂 OTOÑO",
+    titulo: "Marzo",
+    icono: "🥬",
+    plantas: "Acelga, espinaca y cebolla",
+    humedad: "Media",
+    luz: "Media",
+    temperatura: "Templada",
+    riego: "Moderado"
+  },
+
+  abril: {
+    estacion: "🍂 OTOÑO",
+    titulo: "Abril",
+    icono: "🥬",
+    plantas: "Acelga, espinaca y puerro",
+    humedad: "Media",
+    luz: "Media",
+    temperatura: "Templada",
+    riego: "Moderado"
+  },
+
+  mayo: {
+    estacion: "🍂 OTOÑO",
+    titulo: "Mayo",
+    icono: "🧅",
+    plantas: "Cebolla, acelga y espinaca",
+    humedad: "Media",
+    luz: "Media",
+    temperatura: "Fresca",
+    riego: "Moderado"
+  },
+
+  junio: {
+    estacion: "❄️ INVIERNO",
+    titulo: "Junio",
+    icono: "🥦",
+    plantas: "Brócoli, ajo y puerro",
+    humedad: "Media",
+    luz: "Media",
+    temperatura: "Fría",
+    riego: "Bajo"
+  },
+
+  julio: {
+    estacion: "❄️ INVIERNO",
+    titulo: "Julio",
+    icono: "🧄",
+    plantas: "Ajo, cebolla y brócoli",
+    humedad: "Media",
+    luz: "Media",
+    temperatura: "Fría",
+    riego: "Bajo"
+  },
+
+  agosto: {
+    estacion: "❄️ INVIERNO",
+    titulo: "Agosto",
+    icono: "🥬",
+    plantas: "Lechuga, ajo y brócoli",
+    humedad: "Media",
+    luz: "Media",
+    temperatura: "Fresca",
+    riego: "Moderado"
+  },
+
+  septiembre: {
+    estacion: "🌸 PRIMAVERA",
+    titulo: "Septiembre",
+    icono: "🥕",
+    plantas: "Lechuga, zanahoria y tomate",
+    humedad: "Media",
+    luz: "Alta",
+    temperatura: "Templada",
+    riego: "Moderado"
+  },
+
+  octubre: {
+    estacion: "🌸 PRIMAVERA",
+    titulo: "Octubre",
+    icono: "🍅",
+    plantas: "Tomate, rabanito y albahaca",
+    humedad: "Media",
+    luz: "Alta",
+    temperatura: "Templada",
+    riego: "Moderado"
+  },
+
+  noviembre: {
+    estacion: "🌸 PRIMAVERA",
+    titulo: "Noviembre",
+    icono: "🌱",
+    plantas: "Tomate, albahaca y zanahoria",
+    humedad: "Media",
+    luz: "Alta",
+    temperatura: "Cálida",
+    riego: "Frecuente"
+  },
+
+  diciembre: {
+    estacion: "☀️ VERANO",
+    titulo: "Diciembre",
+    icono: "🍅",
+    plantas: "Tomate, albahaca y zapallo",
+    humedad: "Alta",
+    luz: "Alta",
+    temperatura: "Cálida",
+    riego: "Frecuente"
+  }
+
+};
 
 
-if(mes == "enero" || mes == "febrero" || mes == "diciembre"){
+function mostrarCultivo(mes) {
 
-resultado.innerHTML = "En verano podés plantar tomate, albahaca y zapallo.";
+  const cultivo = cultivos[mes];
+
+  const resultado = document.getElementById("resultado");
+
+  resultado.innerHTML = `
+
+    <div class="resultado-icono">
+      ${cultivo.icono}
+    </div>
+
+    <p style="color:#2e7d32;font-weight:bold;">
+      ${cultivo.estacion}
+    </p>
+
+    <h3>
+      ${cultivo.titulo}
+    </h3>
+
+    <p>
+      🌱 <strong>Cultivos recomendados:</strong><br>
+      ${cultivo.plantas}
+    </p>
+
+    <p>
+      💧 <strong>Humedad:</strong> ${cultivo.humedad}
+      &nbsp; | &nbsp;
+      ☀️ <strong>Luz:</strong> ${cultivo.luz}
+    </p>
+
+    <p>
+      🌡️ <strong>Temperatura:</strong> ${cultivo.temperatura}
+      &nbsp; | &nbsp;
+      🚿 <strong>Riego:</strong> ${cultivo.riego}
+    </p>
+
+  `;
 
 }
-
-else if(mes == "marzo" || mes == "abril" || mes == "mayo"){
-
-resultado.innerHTML = "En otoño se recomienda acelga, espinaca y cebolla.";
-
-}
-
-else if(mes == "junio" || mes == "julio" || mes == "agosto"){
-
-resultado.innerHTML = "En invierno podés plantar ajo, puerro y brócoli.";
-
-}
-
-else if(mes == "septiembre" || mes == "octubre" || mes == "noviembre"){
-
-resultado.innerHTML = "En primavera podés plantar lechuga, zanahoria y tomate.";
-
-}
-
-else{
-
-resultado.innerHTML = "Elegí un mes para consultar.";
-
-}
-
-}
-
 </script>
 </body>
 
