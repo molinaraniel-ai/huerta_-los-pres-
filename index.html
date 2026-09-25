@@ -12,7 +12,65 @@
   padding: 12px;
   text-align: center;
 }
+/* Hojitas flotantes del fondo */
+.hojas-flotantes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
 
+.hojas-flotantes span {
+  position: absolute;
+  font-size: 28px;
+  opacity: 0.45;
+  animation: hojasMover 12s linear infinite;
+}
+
+.hojas-flotantes span:nth-child(1) {
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.hojas-flotantes span:nth-child(2) {
+  left: 28%;
+  animation-delay: 3s;
+  font-size: 22px;
+}
+
+.hojas-flotantes span:nth-child(3) {
+  left: 52%;
+  animation-delay: 6s;
+}
+
+.hojas-flotantes span:nth-child(4) {
+  left: 75%;
+  animation-delay: 1s;
+  font-size: 24px;
+}
+
+.hojas-flotantes span:nth-child(5) {
+  left: 90%;
+  animation-delay: 8s;
+  font-size: 20px;
+}
+
+@keyframes hojasMover {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(60px) rotate(180deg);
+  }
+
+  100% {
+    top: 110%;
+    transform: translateX(-40px) rotate(360deg);
+  }
+}
 nav a {
   display: inline-block;
   color: white;
@@ -270,6 +328,13 @@ p, li {
   }
 
 }
+    /* Hacer que el contenido quede por encima de las hojas */
+nav,
+header,
+main {
+  position: relative;
+  z-index: 1;
+}
 }
   </style>
 </head>
@@ -437,5 +502,12 @@ resultado.innerHTML = "Elegí un mes para consultar.";
 
 }
   </script>
+  <div class="hojas-flotantes" aria-hidden="true">
+  <span>🍃</span>
+  <span>🌿</span>
+  <span>🍃</span>
+  <span>🌱</span>
+  <span>🍃</span>
+</div>
 </body>
 </html>
