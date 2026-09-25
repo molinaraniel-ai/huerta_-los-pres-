@@ -349,6 +349,24 @@ nav a:hover {
   .tarjeta {
     width: auto;
   }
+
+  .tarjeta:not(:last-child)::after {
+    content: "↓";
+    right: 50%;
+    top: auto;
+    bottom: -28px;
+    transform: translateX(50%);
+  }
+
+  @keyframes flechaMover {
+    0%, 100% {
+      transform: translateX(50%) translateY(0);
+    }
+
+    50% {
+      transform: translateX(50%) translateY(5px);
+    }
+  }
 }
     /* Diseño responsive para celulares */
 @media (max-width: 600px) {
