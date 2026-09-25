@@ -124,6 +124,99 @@ nav a:hover {
   background-color: #1b5e20;
   transform: scale(1.05);
 }
+    /* Tarjetas modernas del funcionamiento */
+.funcionamiento {
+  position: relative;
+  overflow: hidden;
+}
+
+.funcionamiento::before {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: #a5d6a7;
+  border-radius: 50%;
+  top: -120px;
+  right: -100px;
+  opacity: 0.35;
+  animation: flotar 5s ease-in-out infinite;
+}
+
+.tarjetas {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tarjeta {
+  flex: 1;
+  background: linear-gradient(145deg, #ffffff, #eef8ef);
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.12);
+  transition: transform 0.4s, box-shadow 0.4s;
+  animation: aparecer 0.8s ease forwards;
+}
+
+.tarjeta:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(46, 125, 50, 0.25);
+}
+
+.icono {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.tarjeta h3 {
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.tarjeta p {
+  color: #455a64;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de movimiento */
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Adaptación para celular */
+@media (max-width: 700px) {
+  .tarjetas {
+    flex-direction: column;
+  }
+
+  .tarjeta {
+    width: auto;
+  }
+}
     /* Diseño responsive para celulares */
 @media (max-width: 600px) {
 
