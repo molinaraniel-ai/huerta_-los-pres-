@@ -204,7 +204,26 @@ section {
   text-align: center;
   margin-bottom: 25px;
 }
+.planta-animada {
+  font-size: 70px;
+  margin-bottom: 5px;
+  animation: plantaViva 2s ease-in-out infinite;
+  display: inline-block;
+}
 
+@keyframes plantaViva {
+  0% {
+    transform: translateY(0) rotate(-3deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(3deg) scale(1.08);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-3deg) scale(1);
+  }
+}
 .siembra-titulo span {
   color: #2e7d32;
   font-size: 0.8rem;
